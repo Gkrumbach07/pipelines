@@ -337,9 +337,10 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState, MatchPar
           rr => rr.status === V2beta1RecurringRunStatus.ENABLED,
         ).length;
       } catch (err) {
+        const error = err instanceof Error ? err : new Error(String(err));
         await this.showPageError(
           `Error: failed to retrieve recurring runs for experiment: ${experimentId}.`,
-          err,
+          error,
         );
         logger.error(`Error fetching recurring runs for experiment: ${experimentId}`, err);
       }

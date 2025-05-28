@@ -86,6 +86,14 @@ export async function errorToMessage(error: any): Promise<string> {
   return JSON.stringify(error) || '';
 }
 
+export function getErrorMessage(error: any): string | undefined {
+  if (error && typeof error === 'object' && 'message' in error) {
+    return error.message;
+  }
+
+  return undefined;
+}
+
 export function enabledDisplayString(trigger: ApiTrigger | undefined, enabled: boolean): string {
   if (trigger) {
     return enabled ? 'Yes' : 'No';
@@ -234,6 +242,16 @@ export function s(items: any[] | number): string {
 interface ServiceError {
   message: string;
   code?: number;
+}
+
+export function isServiceError(error: any): error is ServiceError {
+  return (
+    error &&
+    typeof error === 'object' &&
+    typeof error.message === 'string' &&
+    // code is optional, but if present, should be a number
+    (error.code === undefined || typeof error.code === 'number')
+  );
 }
 
 export function serviceErrorToString(error: ServiceError): string {
@@ -487,6 +505,7 @@ export function isSafari(): boolean {
     /constructor/i.test(window.HTMLElement.toString()) ||
     (function(p) {
       return p.toString() === '[object SafariRemoteNotification]';
+      // @ts-ignore
     })(!window['safari'] || (typeof 'safari' !== 'undefined' && window['safari'].pushNotification));
   return isSafari;
 }

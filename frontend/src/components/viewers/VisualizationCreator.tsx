@@ -120,11 +120,14 @@ class VisualizationCreator extends Viewer<VisualizationCreatorProps, Visualizati
             }}
             disabled={isBusy}
           >
-            {this.getAvailableTypes(allowCustomVisualizations).map((key: string) => (
-              <MenuItem key={key} value={ApiVisualizationType[key]}>
-                {ApiVisualizationType[key]}
-              </MenuItem>
-            ))}
+            {this.getAvailableTypes(allowCustomVisualizations).map((key: string) => {
+              const type = ApiVisualizationType[key as keyof typeof ApiVisualizationType];
+              return (
+                <MenuItem key={key} value={type}>
+                  {type}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
 

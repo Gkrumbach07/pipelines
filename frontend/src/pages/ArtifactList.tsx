@@ -45,6 +45,8 @@ import {
   groupRows,
   rowFilterFn,
   serviceErrorToString,
+  isServiceError,
+  getErrorMessage,
 } from 'src/lib/Utils';
 import { Page } from 'src/pages/Page';
 
@@ -195,7 +197,7 @@ export class ArtifactList extends Page<ArtifactListProps, ArtifactListState> {
     } catch (err) {
       // Code === 5 means no record found in backend. This is a temporary workaround.
       // TODO: remove err.code !== 5 check when backend is fixed.
-      if (err.code !== 5) {
+      if (isServiceError(err) && err.code !== 5) {
         this.showPageError(serviceErrorToString(err));
       }
     }
@@ -248,11 +250,8 @@ export class ArtifactList extends Page<ArtifactListProps, ArtifactListState> {
 
       return flattenedRows;
     } catch (err) {
-      if (err.message) {
-        this.showPageError(err.message, err);
-      } else {
-        this.showPageError('Unknown error', err);
-      }
+      const error = err instanceof Error ? err : new Error(String(err));
+      this.showPageError(getErrorMessage(error) || 'Unknown error', error);
     }
     return [];
   }

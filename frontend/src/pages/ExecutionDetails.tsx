@@ -43,7 +43,7 @@ import { ResourceInfo, ResourceType } from '../components/ResourceInfo';
 import { RoutePage, RoutePageFactory, RouteParams } from '../components/Router';
 import { ToolbarProps } from '../components/Toolbar';
 import { color, commonCss, padding } from '../Css';
-import { logger, serviceErrorToString } from '../lib/Utils';
+import { logger, serviceErrorToString, isServiceError } from '../lib/Utils';
 import { Page, PageErrorHandler } from './Page';
 
 interface ExecutionDetailsState {
@@ -248,7 +248,12 @@ export class ExecutionDetailsContent extends Component<
         executionType,
       });
     } catch (err) {
-      this.props.onError(serviceErrorToString(err), err, 'error', this.refresh);
+      this.props.onError(
+        serviceErrorToString(isServiceError(err) ? err : { message: String(err) }),
+        err,
+        'error',
+        this.refresh,
+      );
     }
   };
 }
@@ -310,7 +315,7 @@ class SectionIO extends Component<
     try {
       const linkedArtifacts = await getLinkedArtifactsByEvents(this.props.events);
 
-      const artifactDataMap = {};
+      const artifactDataMap: { [id: number]: ArtifactInfo } = {};
       linkedArtifacts.forEach(linkedArtifact => {
         const id = linkedArtifact.event.getArtifactId();
         if (!id) {
@@ -319,7 +324,7 @@ class SectionIO extends Component<
         }
         artifactDataMap[id] = {
           id,
-          name: getArtifactName(linkedArtifact),
+          name: getArtifactName(linkedArtifact) || '',
           typeId: linkedArtifact.artifact.getTypeId(),
           uri: linkedArtifact.artifact.getUri() || '',
         };

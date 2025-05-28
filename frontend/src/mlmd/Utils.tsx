@@ -59,7 +59,12 @@ export function getResourcePropertyViaFallBack(
         fieldRepos.reduce(
           (v: string, repo: RepoType, isCustomProp) =>
             v || // eslint-disable-next-line no-sequences
-            ((field in repo && getResourceProperty(res, repo[field], !!isCustomProp)) as string),
+            ((field in repo &&
+              getResourceProperty(
+                res,
+                repo[field as keyof typeof repo],
+                !!isCustomProp,
+              )) as string),
           '',
         ),
       '',

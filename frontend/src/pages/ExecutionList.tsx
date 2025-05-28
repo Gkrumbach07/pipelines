@@ -42,6 +42,8 @@ import {
   groupRows,
   rowFilterFn,
   serviceErrorToString,
+  isServiceError,
+  rethrow,
 } from 'src/lib/Utils';
 import { Page } from 'src/pages/Page';
 
@@ -151,7 +153,9 @@ class ExecutionList extends Page<ExecutionListProps, ExecutionListState> {
         rows: this.props.isGroupView ? groupedRows.collapsedRows : flattenedRows,
       });
     } catch (err) {
-      this.showPageError(serviceErrorToString(err));
+      this.showPageError(
+        serviceErrorToString(isServiceError(err as any) ? (err as any) : { message: String(err) }),
+      );
     }
     return listOperationOpts.getNextPageToken();
   }
@@ -166,9 +170,8 @@ class ExecutionList extends Page<ExecutionListProps, ExecutionListState> {
     } catch (err) {
       // Code === 5 means no record found in backend. This is a temporary workaround.
       // TODO: remove err.code !== 5 check when backend is fixed.
-      if (err.code !== 5) {
-        err.message = 'Failed getting executions: ' + err.message;
-        throw err;
+      if (isServiceError(err) && err.code !== 5) {
+        rethrow(err, 'Failed getting executions: ');
       }
     }
     return [];
@@ -188,7 +191,9 @@ class ExecutionList extends Page<ExecutionListProps, ExecutionListState> {
 
       return executionTypesMap;
     } catch (err) {
-      this.showPageError(serviceErrorToString(err));
+      this.showPageError(
+        serviceErrorToString(isServiceError(err as any) ? (err as any) : { message: String(err) }),
+      );
     }
     return new Map();
   }

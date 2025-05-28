@@ -74,6 +74,7 @@ import {
   getRunDurationFromWorkflow,
   logger,
   serviceErrorToString,
+  isServiceError,
 } from 'src/lib/Utils';
 import WorkflowParser from 'src/lib/WorkflowParser';
 import { ExecutionDetailsContent } from './ExecutionDetails';
@@ -927,7 +928,12 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState, MatchPar
   }
 
   private handleError = async (error: Error) => {
-    await this.showPageError(serviceErrorToString(error), error);
+    await this.showPageError(
+      serviceErrorToString(
+        isServiceError(error as any) ? (error as any) : { message: String(error) },
+      ),
+      error as any,
+    );
   };
 
   private async _startAutoRefresh(): Promise<void> {

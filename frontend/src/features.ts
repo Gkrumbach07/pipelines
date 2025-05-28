@@ -79,7 +79,7 @@ export function saveFeatures(f: Feature[]) {
   }
 }
 
-function storageAvailable(type: string) {
+function storageAvailable(type: keyof Window) {
   var storage;
   try {
     storage = window[type];

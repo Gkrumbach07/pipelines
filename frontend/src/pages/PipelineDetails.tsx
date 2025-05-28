@@ -135,20 +135,9 @@ class PipelineDetails extends Page<{}, PipelineDetailsState, MatchParams> {
       // Add buttons for creating experiment and deleting pipeline version
       buttons
         .newRunFromPipelineVersion(
-          () => {
-            return this.state.v2Pipeline
-              ? this.state.v2Pipeline.pipeline_id
-              : pipelineIdFromParams
-              ? pipelineIdFromParams
-              : '';
-          },
-          () => {
-            return this.state.v2SelectedVersion
-              ? this.state.v2SelectedVersion.pipeline_version_id
-              : pipelineVersionIdFromParams
-              ? pipelineVersionIdFromParams
-              : '';
-          },
+          () => this.state.v2Pipeline?.pipeline_id || pipelineIdFromParams || '',
+          () =>
+            this.state.v2SelectedVersion?.pipeline_version_id || pipelineVersionIdFromParams || '',
         )
         .newPipelineVersion('Upload version', () =>
           pipelineIdFromParams ? pipelineIdFromParams : '',

@@ -236,7 +236,7 @@ class CompareV1 extends Page<{}, CompareState> {
           workflowObjects.push(JSON.parse(run.pipeline_runtime!.workflow_manifest || '{}'));
         } catch (err) {
           failingRuns.push(id);
-          lastError = err;
+          lastError = err instanceof Error ? err : new Error(String(err));
         }
       }),
     );
@@ -315,7 +315,7 @@ class CompareV1 extends Page<{}, CompareState> {
       [METRICS_SECTION_NAME]: true,
     };
     Array.from(this.state.viewersMap.keys()).forEach(t => {
-      const sectionName = componentMap[t].prototype.getDisplayName();
+      const sectionName: keyof typeof collapseSections = componentMap[t].prototype.getDisplayName();
       collapseSections[sectionName] = true;
     });
     this.setState({ collapseSections });

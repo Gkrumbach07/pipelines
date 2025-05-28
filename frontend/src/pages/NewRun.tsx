@@ -54,7 +54,7 @@ import { Apis, ExperimentSortKeys, PipelineSortKeys, PipelineVersionSortKeys } f
 import Buttons from '../lib/Buttons';
 import RunUtils from '../lib/RunUtils';
 import { URLParser } from '../lib/URLParser';
-import { errorToMessage, logger, mergeApiParametersByNames } from '../lib/Utils';
+import { errorToMessage, getErrorMessage, logger, mergeApiParametersByNames } from '../lib/Utils';
 import { Workflow } from '../third_party/mlmd/argo_template';
 import { Page } from './Page';
 import ResourceSelector from './ResourceSelector';
@@ -1284,7 +1284,7 @@ export class NewRun extends Page<NewRunProps, NewRunState> {
 
       this.setStateSafe({ errorMessage: '' });
     } catch (err) {
-      this.setStateSafe({ errorMessage: err.message });
+      this.setStateSafe({ errorMessage: getErrorMessage(err) || 'Unknown error' });
     }
   }
 

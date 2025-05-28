@@ -32,6 +32,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { classes, stylesheet } from 'typestyle';
+import { getErrorMessage } from 'src/lib/Utils';
 
 export const css = stylesheet({
   button: {
@@ -299,7 +300,10 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
           this.setState({ busy: false });
         }
       } catch (err) {
-        this.setState({ busy: false, errorMessage: err?.message || 'Unknown error' });
+        this.setState({
+          busy: false,
+          errorMessage: getErrorMessage(err) || 'Unknown error',
+        });
       }
     });
   }
@@ -317,7 +321,10 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
           this._checkTensorboardApp();
         });
       } catch (err) {
-        this.setState({ busy: false, errorMessage: err?.message || 'Unknown error' });
+        this.setState({
+          busy: false,
+          errorMessage: getErrorMessage(err) || 'Unknown error',
+        });
       }
     });
   };
@@ -335,7 +342,10 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
           tensorboardReady: false,
         });
       } catch (err) {
-        this.setState({ busy: false, errorMessage: err?.message || 'Unknown error' });
+        this.setState({
+          busy: false,
+          errorMessage: getErrorMessage(err) || 'Unknown error',
+        });
       }
     });
   };

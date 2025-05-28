@@ -179,9 +179,9 @@ function NewRunParametersV2(props: NewRunParametersProps) {
   } = props;
   const [customPipelineRootChecked, setCustomPipelineRootChecked] = useState(false);
   const [customPipelineRoot, setCustomPipelineRoot] = useState(props.pipelineRoot);
-  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+  const [errorMessages, setErrorMessages] = useState<{ [key: string]: string }>({});
 
-  const [updatedParameters, setUpdatedParameters] = useState({});
+  const [updatedParameters, setUpdatedParameters] = useState<RuntimeParameters>({});
   useEffect(() => {
     if (clonedRuntimeConfig && clonedRuntimeConfig.parameters) {
       const clonedRuntimeParametersStr: RuntimeParameters = {};
@@ -195,7 +195,7 @@ function NewRunParametersV2(props: NewRunParametersProps) {
       });
       setUpdatedParameters(clonedRuntimeParametersStr);
       // Directly using cloned paramters guarantees input is valid and no error message
-      setErrorMessages([]);
+      setErrorMessages({});
       if (setIsValidInput) {
         setIsValidInput(true);
       }
@@ -208,7 +208,7 @@ function NewRunParametersV2(props: NewRunParametersProps) {
     // TODO(jlyaoyuli): If we have parameters from run, put original default value next to the paramKey
     const runtimeParametersWithDefault: RuntimeParameters = {};
     let allParamtersWithDefault = true;
-    let errMsg: string[] = [];
+    let errMsg: { [key: string]: string } = {};
     Object.keys(specParameters).forEach(key => {
       if (specParameters[key].defaultValue !== undefined) {
         // TODO(zijianjoy): Make sure to consider all types of parameters.
@@ -320,11 +320,16 @@ function NewRunParametersV2(props: NewRunParametersProps) {
                       handleParameterChange(parametersInRealType);
                     }
 
-                    errorMessages[k] = generateInputValidationErrMsg(
+                    const errorMessage = generateInputValidationErrMsg(
                       parametersInRealType[k],
                       specParameters[k].parameterType,
                       specParameters[k].isOptional,
                     );
+                    if (errorMessage) {
+                      errorMessages[k] = errorMessage;
+                    } else {
+                      delete errorMessages[k];
+                    }
                     setErrorMessages(errorMessages);
 
                     Object.values(errorMessages).forEach(errorMessage => {

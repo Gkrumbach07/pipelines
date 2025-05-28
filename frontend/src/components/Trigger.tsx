@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -37,7 +36,8 @@ import {
   parseTrigger,
   ParsedTrigger,
 } from '../lib/TriggerUtils';
-import { logger } from 'src/lib/Utils';
+import { getErrorMessage, logger } from 'src/lib/Utils';
+import { Fab } from '@material-ui/core';
 
 type TriggerInitialProps = {
   maxConcurrentRuns?: string;
@@ -328,11 +328,13 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
               width={95}
               variant='outlined'
             >
-              {Object.keys(PeriodicInterval).map((interval, i) => (
-                <MenuItem key={i} value={PeriodicInterval[interval]}>
-                  {PeriodicInterval[interval] + (type === TriggerType.INTERVALED ? 's' : '')}
-                </MenuItem>
-              ))}
+              {(Object.keys(PeriodicInterval) as Array<keyof typeof PeriodicInterval>).map(
+                (interval, i) => (
+                  <MenuItem key={i} value={PeriodicInterval[interval]}>
+                    {PeriodicInterval[interval] + (type === TriggerType.INTERVALED ? 's' : '')}
+                  </MenuItem>
+                ),
+              )}
             </Input>
           </span>
         </div>
@@ -354,15 +356,14 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
                 />
                 <Separator />
                 {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, i) => (
-                  <Button
-                    variant='fab'
-                    mini={true}
+                  <Fab
+                    size='small'
                     key={i}
                     onClick={() => this._toggleDay(i)}
                     color={selectedDays[i] ? 'primary' : 'secondary'}
                   >
                     {day}
-                  </Button>
+                  </Fab>
                 ))}
               </div>
             )}
@@ -444,7 +445,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
         startDateTime = pickersToDate(hasStartDate, startDate, startTime);
       }
     } catch (e) {
-      if (e.message === 'Invalid picker format') {
+      if (getErrorMessage(e) === 'Invalid picker format') {
         startTimeMessage = "Invalid start date or time, start time won't be set";
       } else {
         throw e;
@@ -456,7 +457,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
         endDateTime = pickersToDate(hasEndDate, endDate, endTime);
       }
     } catch (e) {
-      if (e.message === 'Invalid picker format') {
+      if (getErrorMessage(e) === 'Invalid picker format') {
         endTimeMessage = "Invalid end date or time, end time won't be set";
       } else {
         throw e;

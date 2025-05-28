@@ -150,7 +150,7 @@ export class ExperimentList extends Page<{ namespace?: string }, ExperimentListS
     props: CustomRendererProps<string>,
   ) => {
     return (
-      <Tooltip title={props.value} enterDelay={300} placement='top-start'>
+      <Tooltip title={props.value || ''} enterDelay={300} placement='top-start'>
         <Link
           className={commonCss.link}
           onClick={e => e.stopPropagation()}
@@ -205,7 +205,8 @@ export class ExperimentList extends Page<{ namespace?: string }, ExperimentListS
       displayExperiments = response.experiments || [];
       displayExperiments.forEach(exp => (exp.expandState = ExpandState.COLLAPSED));
     } catch (err) {
-      await this.showPageError('Error: failed to retrieve list of experiments.', err);
+      const error = err instanceof Error ? err : new Error(String(err));
+      await this.showPageError('Error: failed to retrieve list of experiments.', error);
       // No point in continuing if we couldn't retrieve any experiments.
       return '';
     }

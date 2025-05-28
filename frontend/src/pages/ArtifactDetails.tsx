@@ -36,7 +36,7 @@ import { ResourceInfo, ResourceType } from '../components/ResourceInfo';
 import { RoutePage, RoutePageFactory, RouteParams } from '../components/Router';
 import { ToolbarProps } from '../components/Toolbar';
 import { commonCss, padding } from '../Css';
-import { logger, serviceErrorToString, titleCase } from '../lib/Utils';
+import { isServiceError, logger, serviceErrorToString, titleCase } from '../lib/Utils';
 import { Page, PageProps } from './Page';
 import { ArtifactHelpers } from 'src/mlmd/MlmdUtils';
 
@@ -87,7 +87,7 @@ class ArtifactDetails extends Page<{}, ArtifactDetailsState, MatchParams> {
     // HACK: this distinguishes artifact from execution, only artifacts have
     // the getUri() method.
     // TODO: switch to use typedResource
-    if (typeof resource['getUri'] === 'function') {
+    if ('getUri' in resource && typeof resource.getUri === 'function') {
       return RoutePageFactory.artifactDetails(resource.getId());
     } else {
       return RoutePageFactory.executionDetails(resource.getId());
@@ -197,7 +197,9 @@ class ArtifactDetails extends Page<{}, ArtifactDetailsState, MatchParams> {
       });
       this.setState({ artifact, artifactType });
     } catch (err) {
-      this.showPageError(serviceErrorToString(err));
+      this.showPageError(
+        serviceErrorToString(isServiceError(err) ? err : { message: String(err) }),
+      );
     }
   };
 

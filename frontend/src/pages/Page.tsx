@@ -33,7 +33,7 @@ export interface PageProps<M extends { [K in keyof M]?: string } = {}>
 
 export type PageErrorHandler = (
   message: string,
-  error?: Error,
+  error?: unknown,
   mode?: 'error' | 'warning',
   refresh?: () => Promise<void>,
 ) => Promise<void>;
