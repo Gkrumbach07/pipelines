@@ -106,7 +106,8 @@ export interface RunDetailsInternalProps {
   gkeMetadata: GkeMetadata;
 }
 
-export type RunDetailsProps = PageProps & Exclude<RunDetailsInternalProps, 'gkeMetadata'>;
+export type RunDetailsProps = PageProps<MatchParams> &
+  Exclude<RunDetailsInternalProps, 'gkeMetadata'>;
 
 interface AnnotatedConfig {
   config: ViewerConfig;
@@ -173,7 +174,9 @@ export const css = stylesheet({
   },
 });
 
-class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
+type MatchParams = { [RouteParams.runId]: string; [RouteParams.executionId]?: string };
+
+class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState, MatchParams> {
   public state: RunDetailsState = {
     allArtifactConfigs: [],
     allowCustomVisualizations: false,

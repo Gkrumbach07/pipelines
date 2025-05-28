@@ -53,7 +53,9 @@ interface ExecutionDetailsState {
   artifactTypeMap?: Map<number, ArtifactType>;
 }
 
-export default class ExecutionDetails extends Page<{}, ExecutionDetailsState> {
+type MatchParams = { [RouteParams.ID]: string };
+
+export default class ExecutionDetails extends Page<{}, ExecutionDetailsState, MatchParams> {
   public state: ExecutionDetailsState = {};
 
   private get id(): number {

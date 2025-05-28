@@ -61,7 +61,9 @@ interface ArtifactDetailsState {
   artifactType?: ArtifactType;
 }
 
-class ArtifactDetails extends Page<{}, ArtifactDetailsState> {
+type MatchParams = { [RouteParams.ID]?: string };
+
+class ArtifactDetails extends Page<{}, ArtifactDetailsState, MatchParams> {
   private get fullTypeName(): string {
     return this.state.artifactType?.getName() || '';
   }
@@ -212,7 +214,7 @@ class ArtifactDetails extends Page<{}, ArtifactDetailsState> {
 }
 
 // This guarantees that each artifact renders a different <ArtifactDetails /> instance.
-const EnhancedArtifactDetails = (props: PageProps) => {
+const EnhancedArtifactDetails = (props: PageProps<MatchParams>) => {
   return <ArtifactDetails {...props} key={props.match.params[RouteParams.ID]} />;
 };
 

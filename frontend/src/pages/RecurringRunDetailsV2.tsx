@@ -33,7 +33,9 @@ interface RecurringRunConfigState {
   run: V2beta1RecurringRun | null;
 }
 
-class RecurringRunDetailsV2 extends Page<{}, RecurringRunConfigState> {
+type MatchParams = { [RouteParams.recurringRunId]: string };
+
+class RecurringRunDetailsV2 extends Page<{}, RecurringRunConfigState, MatchParams> {
   constructor(props: any) {
     super(props);
 

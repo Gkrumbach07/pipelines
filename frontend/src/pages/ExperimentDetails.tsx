@@ -111,7 +111,9 @@ interface ExperimentDetailsState {
   runlistRefreshCount: number;
 }
 
-export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
+type MatchParams = { [RouteParams.experimentId]: string };
+
+export class ExperimentDetails extends Page<{}, ExperimentDetailsState, MatchParams> {
   constructor(props: any) {
     super(props);
 
@@ -427,7 +429,7 @@ export class ExperimentDetails extends Page<{}, ExperimentDetailsState> {
   }
 }
 
-const EnhancedExperimentDetails: React.FC<PageProps> = props => {
+const EnhancedExperimentDetails: React.FC<PageProps<MatchParams>> = props => {
   // When namespace changes, this experiment no longer belongs to new namespace.
   // So we redirect to experiment list page instead.
   const namespaceChanged = useNamespaceChangeEvent();

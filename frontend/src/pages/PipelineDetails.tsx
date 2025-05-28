@@ -82,7 +82,12 @@ type Origin = {
   v2RecurringRun?: V2beta1RecurringRun;
 };
 
-class PipelineDetails extends Page<{}, PipelineDetailsState> {
+type MatchParams = {
+  [RouteParams.pipelineId]: string;
+  [RouteParams.pipelineVersionId]?: string;
+};
+
+class PipelineDetails extends Page<{}, PipelineDetailsState, MatchParams> {
   constructor(props: any) {
     super(props);
 
