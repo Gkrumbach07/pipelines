@@ -93,15 +93,15 @@ const ROCCurve: React.FC<ROCCurveProps> = ({
   const height = width * 0.65;
   const isSmall = width < 600;
   const datasets = configs.map(d => d.data);
-  const numLines = datasets.length;
-  const labels = configs.map((_, i) => `threshold (Series #${i + 1})`);
+  // const numLines = datasets.length;
+  // const labels = configs.map((_, i) => `threshold (Series #${i + 1})`);
   const baseLineData = Array.from(Array(100).keys()).map(x => ({ x: x / 100, y: x / 100 }));
 
   const [highlightIndex, setHighlightIndex] = useState<number>(-1);
   const [zoomDomain, setZoomDomain] = useState<any>(undefined);
 
   // Tooltip state
-  const [activePoints, setActivePoints] = useState<any[]>([]);
+  const [, setActivePoints] = useState<any[]>([]);
 
   return (
     <div>
