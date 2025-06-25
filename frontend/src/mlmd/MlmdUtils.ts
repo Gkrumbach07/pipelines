@@ -73,7 +73,7 @@ async function getContext({ type, name }: { type: string; name: string }): Promi
     }
     return context;
   } catch (err) {
-    err.message = `Cannot find context with ${JSON.stringify(request.toObject())}: ` + err.message;
+    (err as Error).message = `Cannot find context with ${JSON.stringify(request.toObject())}: ` + (err as Error).message;
     throw err;
   }
 }
@@ -221,7 +221,7 @@ export async function getEventByExecution(execution: Execution): Promise<Event[]
   try {
     response = await Api.getInstance().metadataStoreService.getEventsByExecutionIDs(request);
   } catch (err) {
-    err.message = 'Failed to getEventsByExecutionIDs: ' + err.message;
+    (err as Error).message = 'Failed to getEventsByExecutionIDs: ' + (err as Error).message;
     throw err;
   }
   return response.getEventsList();
@@ -259,7 +259,7 @@ async function getContextsByExecution(execution: Execution): Promise<Context[]> 
   try {
     response = await Api.getInstance().metadataStoreService.getContextsByExecution(request);
   } catch (err) {
-    err.message = 'Failed to getContextsByExecution: ' + err.message;
+    (err as Error).message = 'Failed to getContextsByExecution: ' + (err as Error).message;
     throw err;
   }
   return response.getContextsList();
@@ -274,7 +274,7 @@ async function getContextType(contextTypeName: string): Promise<ContextType | un
   try {
     response = await Api.getInstance().metadataStoreService.getContextType(request);
   } catch (err) {
-    err.message = 'Failed to getContextType: ' + err.message;
+    (err as Error).message = 'Failed to getContextType: ' + (err as Error).message;
     throw err;
   }
   return response.getContextType();
@@ -304,7 +304,7 @@ export async function getLinkedArtifactsByEvents(events: Event[]): Promise<Linke
   try {
     artifactsRes = await Api.getInstance().metadataStoreService.getArtifactsByID(artifactsRequest);
   } catch (artifactsErr) {
-    artifactsErr.message = 'Failed to getArtifactsByID: ' + artifactsErr.message;
+    (artifactsErr as Error).message = 'Failed to getArtifactsByID: ' + (artifactsErr as Error).message;
     throw artifactsErr;
   }
 
@@ -356,7 +356,7 @@ export async function getArtifactTypes(): Promise<ArtifactType[]> {
   try {
     res = await Api.getInstance().metadataStoreService.getArtifactTypes(request);
   } catch (err) {
-    err.message = 'Failed to getArtifactTypes: ' + err.message;
+    (err as Error).message = 'Failed to getArtifactTypes: ' + (err as Error).message;
     throw err;
   }
   return res.getArtifactTypesList();
@@ -456,7 +456,7 @@ export async function getEventsByExecutions(executions: Execution[] | undefined)
   try {
     response = await Api.getInstance().metadataStoreService.getEventsByExecutionIDs(request);
   } catch (err) {
-    err.message = 'Failed to getEventsByExecutionIDs: ' + err.message;
+    (err as Error).message = 'Failed to getEventsByExecutionIDs: ' + (err as Error).message;
     throw err;
   }
   return response.getEventsList();

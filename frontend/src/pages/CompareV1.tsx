@@ -316,7 +316,7 @@ class CompareV1 extends Page<{}, CompareState> {
     };
     Array.from(this.state.viewersMap.keys()).forEach(t => {
       const sectionName = componentMap[t].prototype.getDisplayName();
-      collapseSections[sectionName] = true;
+      (collapseSections as any)[sectionName] = true;
     });
     this.setState({ collapseSections });
   }

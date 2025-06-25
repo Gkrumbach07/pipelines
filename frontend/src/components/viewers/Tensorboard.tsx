@@ -299,7 +299,7 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
           this.setState({ busy: false });
         }
       } catch (err) {
-        this.setState({ busy: false, errorMessage: err?.message || 'Unknown error' });
+        this.setState({ busy: false, errorMessage: (err as any)?.message || 'Unknown error' });
       }
     });
   }
@@ -317,7 +317,7 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
           this._checkTensorboardApp();
         });
       } catch (err) {
-        this.setState({ busy: false, errorMessage: err?.message || 'Unknown error' });
+        this.setState({ busy: false, errorMessage: (err as any)?.message || 'Unknown error' });
       }
     });
   };
@@ -335,7 +335,7 @@ class TensorboardViewer extends Viewer<TensorboardViewerProps, TensorboardViewer
           tensorboardReady: false,
         });
       } catch (err) {
-        this.setState({ busy: false, errorMessage: err?.message || 'Unknown error' });
+        this.setState({ busy: false, errorMessage: (err as any)?.message || 'Unknown error' });
       }
     });
   };

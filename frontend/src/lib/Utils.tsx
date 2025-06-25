@@ -31,6 +31,15 @@ import { StorageService } from './WorkflowParser';
 import { ApiParameter } from 'src/apis/pipeline';
 import { V2beta1Run } from 'src/apisv2beta1/run';
 
+// Add type declaration for safari window property to fix TS7053 errors
+declare global {
+  interface Window {
+    safari?: {
+      pushNotification?: any;
+    };
+  }
+}
+
 export const logger = {
   error: (...args: any[]) => {
     // tslint:disable-next-line:no-console
@@ -487,7 +496,7 @@ export function isSafari(): boolean {
     /constructor/i.test(window.HTMLElement.toString()) ||
     (function(p) {
       return p.toString() === '[object SafariRemoteNotification]';
-    })(!window['safari'] || (typeof 'safari' !== 'undefined' && window['safari'].pushNotification));
+    })(!window.safari || (typeof 'safari' !== 'undefined' && window.safari?.pushNotification));
   return isSafari;
 }
 

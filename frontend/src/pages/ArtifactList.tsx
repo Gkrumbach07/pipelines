@@ -194,8 +194,8 @@ export class ArtifactList extends Page<ArtifactListProps, ArtifactListState> {
       return response.getArtifactsList();
     } catch (err) {
       // Code === 5 means no record found in backend. This is a temporary workaround.
-      // TODO: remove err.code !== 5 check when backend is fixed.
-      if (err.code !== 5) {
+      // TODO: remove (err as any).code !== 5 check when backend is fixed.
+      if ((err as any).code !== 5) {
         this.showPageError(serviceErrorToString(err));
       }
     }
@@ -248,8 +248,8 @@ export class ArtifactList extends Page<ArtifactListProps, ArtifactListState> {
 
       return flattenedRows;
     } catch (err) {
-      if (err.message) {
-        this.showPageError(err.message, err);
+      if ((err as any).message) {
+        this.showPageError((err as any).message, err);
       } else {
         this.showPageError('Unknown error', err);
       }

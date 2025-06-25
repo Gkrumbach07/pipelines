@@ -43,7 +43,7 @@ export function RecurringRunDetailsV2FC(props: PageProps) {
   const [recurringRunIdFromApi, setRecurringRunIdFromApi] = useState<string>();
   const [recurringRunStatus, setRecurringRunStatus] = useState<V2beta1RecurringRunStatus>();
 
-  const recurringRunId = props.match.params[RouteParams.recurringRunId];
+  const recurringRunId = (props.match.params as any)[RouteParams.recurringRunId];
   const Refresh = () => setRefresh(refreshed => !refreshed);
 
   const {

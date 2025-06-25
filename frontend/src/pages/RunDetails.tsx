@@ -199,7 +199,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
 
   public getInitialToolbarState(): ToolbarProps {
     const buttons = new Buttons(this.props, this.refresh.bind(this));
-    const runIdFromParams = this.props.match.params[RouteParams.runId];
+    const runIdFromParams = (this.props.match.params as any)[RouteParams.runId];
     return {
       actions: buttons
         .retryRun(
@@ -743,7 +743,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
 
   public async load(): Promise<void> {
     this.clearBanner();
-    const runId = this.props.match.params[RouteParams.runId];
+    const runId = (this.props.match.params as any)[RouteParams.runId];
 
     try {
       const allowCustomVisualizations = await Apis.areCustomVisualizationsAllowed();
@@ -898,7 +898,7 @@ class RunDetails extends Page<RunDetailsInternalProps, RunDetailsState> {
       });
 
       // Read optional exeuction id from query parameter. If valid, shows detail of selected node.
-      const paramExecutionId = this.props.match.params[RouteParams.executionId];
+      const paramExecutionId = (this.props.match.params as any)[RouteParams.executionId];
       if (mlmdExecutions) {
         const selectedExec = mlmdExecutions.find(
           exec => exec.getId().toString() === paramExecutionId,

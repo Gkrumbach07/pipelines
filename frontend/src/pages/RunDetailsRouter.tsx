@@ -26,7 +26,7 @@ import { RunDetailsV2 } from 'src/pages/RunDetailsV2';
 
 // This is a router to determine whether to show V1 or V2 run detail page.
 export default function RunDetailsRouter(props: RunDetailsProps) {
-  const runId = props.match.params[RouteParams.runId];
+  const runId = (props.match.params as any)[RouteParams.runId];
   let pipelineManifest: string | undefined;
 
   // Retrieves v2 run detail.

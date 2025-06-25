@@ -1285,7 +1285,7 @@ export class NewRun extends Page<NewRunProps, NewRunState> {
 
       this.setStateSafe({ errorMessage: '' });
     } catch (err) {
-      this.setStateSafe({ errorMessage: err.message });
+      this.setStateSafe({ errorMessage: (err as any).message });
     }
   }
 

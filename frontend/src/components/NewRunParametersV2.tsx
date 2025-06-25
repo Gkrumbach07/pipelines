@@ -292,9 +292,9 @@ function NewRunParametersV2(props: NewRunParametersProps) {
           {Object.entries(specParameters).map(([k, v]) => {
             const param = {
               key: `${k} - ${protoMap.get(ParameterType_ParameterTypeEnum[v.parameterType])}`,
-              value: updatedParameters[k],
+              value: (updatedParameters as any)[k],
               type: v.parameterType,
-              errorMsg: errorMessages[k],
+                              errorMsg: (errorMessages as any)[k],
             };
 
             return (
@@ -307,7 +307,7 @@ function NewRunParametersV2(props: NewRunParametersProps) {
                     const nextUpdatedParameters: RuntimeParameters = {};
 
                     Object.assign(nextUpdatedParameters, updatedParameters);
-                    nextUpdatedParameters[k] = value;
+                    (nextUpdatedParameters as any)[k] = value;
                     setUpdatedParameters(nextUpdatedParameters);
                     Object.entries(nextUpdatedParameters).forEach(([k1, paramStr]) => {
                       parametersInRealType[k1] = convertInput(
@@ -319,7 +319,7 @@ function NewRunParametersV2(props: NewRunParametersProps) {
                       handleParameterChange(parametersInRealType);
                     }
 
-                    errorMessages[k] = generateInputValidationErrMsg(
+                    (errorMessages as any)[k] = generateInputValidationErrMsg(
                       parametersInRealType[k],
                       specParameters[k].parameterType,
                       specParameters[k].isOptional,

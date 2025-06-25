@@ -165,9 +165,9 @@ class ExecutionList extends Page<ExecutionListProps, ExecutionListState> {
       return response.getExecutionsList();
     } catch (err) {
       // Code === 5 means no record found in backend. This is a temporary workaround.
-      // TODO: remove err.code !== 5 check when backend is fixed.
-      if (err.code !== 5) {
-        err.message = 'Failed getting executions: ' + err.message;
+      // TODO: remove (err as any).code !== 5 check when backend is fixed.
+      if ((err as any).code !== 5) {
+        (err as any).message = 'Failed getting executions: ' + (err as any).message;
         throw err;
       }
     }

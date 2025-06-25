@@ -76,7 +76,7 @@ interface RunDetailsV2Info {
 export type RunDetailsV2Props = RunDetailsV2Info & RunDetailsProps;
 
 export function RunDetailsV2(props: RunDetailsV2Props) {
-  const runId = props.match.params[RouteParams.runId];
+  const runId = (props.match.params as any)[RouteParams.runId];
   const run = props.run;
   const pipelineJobStr = props.pipeline_job;
   const pipelineSpec = WorkflowUtils.convertYamlToV2PipelineSpec(pipelineJobStr);
@@ -166,7 +166,7 @@ export function RunDetailsV2(props: RunDetailsV2Props) {
 
   // Update buttons for managing runs.
   const [buttons] = useState(new Buttons(props, () => forceUpdate));
-  const [runIdFromParams] = useState(props.match.params[RouteParams.runId]);
+  const [runIdFromParams] = useState((props.match.params as any)[RouteParams.runId]);
   useEffect(() => {
     if (hasFinishedV2(run.state)) {
       setRunFinished(true);

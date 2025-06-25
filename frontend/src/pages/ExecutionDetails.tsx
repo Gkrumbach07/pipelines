@@ -57,7 +57,7 @@ export default class ExecutionDetails extends Page<{}, ExecutionDetailsState> {
   public state: ExecutionDetailsState = {};
 
   private get id(): number {
-    return parseInt(this.props.match.params[RouteParams.ID], 10);
+    return parseInt((this.props.match.params as any)[RouteParams.ID], 10);
   }
 
   public render(): JSX.Element {
@@ -315,7 +315,7 @@ class SectionIO extends Component<
           logger.error('Artifact has empty id', linkedArtifact.artifact.toObject());
           return;
         }
-        artifactDataMap[id] = {
+        (artifactDataMap as any)[id] = {
           id,
           name: getArtifactName(linkedArtifact),
           typeId: linkedArtifact.artifact.getTypeId(),

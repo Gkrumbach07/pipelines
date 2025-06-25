@@ -29,7 +29,7 @@ import { FeatureKey, isFeatureEnabled } from 'src/features';
 
 // This is a router to determine whether to show V1 or V2 recurring run details page.
 export default function RecurringRunDetailsRouter(props: PageProps) {
-  const recurringRunId = props.match.params[RouteParams.recurringRunId];
+  const recurringRunId = (props.match.params as any)[RouteParams.recurringRunId];
   let pipelineManifest: string | undefined;
 
   const {
