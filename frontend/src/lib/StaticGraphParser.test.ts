@@ -182,7 +182,7 @@ describe('StaticGraphParser', () => {
       expectedNodes.forEach(nodeId => expect(g.nodes()).toContain(nodeId));
       expect(g.nodeCount()).toEqual(expectedNodes.length);
       // Prefix 'onExit - ' is added to exit-handler nodes
-      expect(g.node('on-exit').label).toEqual('onExit - ' + 'on-exit');
+      expect(g.node('on-exit').label).toEqual('onExit - on-exit');
     });
 
     it('adds and connects nodes based on listed dependencies', () => {

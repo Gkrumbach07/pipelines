@@ -133,7 +133,7 @@ export interface ProtobufAny {
  * @enum {string}
  */
 export enum ProtobufNullValue {
-  NULLVALUE = <any>'NULL_VALUE',
+  NULLVALUE = 'NULL_VALUE' as any,
 }
 
 /**
@@ -368,7 +368,7 @@ export const PipelineServiceApiFetchParamCreator = function(configuration?: Conf
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'V2beta1Pipeline' !== 'string' ||
+        'V2beta1Pipeline' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 
@@ -434,7 +434,7 @@ export const PipelineServiceApiFetchParamCreator = function(configuration?: Conf
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'V2beta1PipelineVersion' !== 'string' ||
+        'V2beta1PipelineVersion' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 

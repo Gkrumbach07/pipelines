@@ -233,7 +233,7 @@ describe('TriggerUtils', () => {
           'not a trigger type' as any,
           '',
         ),
-      ).toThrowError('Invalid TriggerType: ' + 'not a trigger type');
+      ).toThrowError('Invalid TriggerType: not a trigger type');
     });
   });
 

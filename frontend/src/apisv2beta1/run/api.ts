@@ -153,7 +153,7 @@ export interface ProtobufAny {
  * @enum {string}
  */
 export enum ProtobufNullValue {
-  NULLVALUE = <any>'NULL_VALUE',
+  NULLVALUE = 'NULL_VALUE' as any,
 }
 
 /**
@@ -514,9 +514,9 @@ export interface V2beta1RunDetails {
  * @enum {string}
  */
 export enum V2beta1RunStorageState {
-  STORAGESTATEUNSPECIFIED = <any>'STORAGE_STATE_UNSPECIFIED',
-  AVAILABLE = <any>'AVAILABLE',
-  ARCHIVED = <any>'ARCHIVED',
+  STORAGESTATEUNSPECIFIED = 'STORAGE_STATE_UNSPECIFIED' as any,
+  AVAILABLE = 'AVAILABLE' as any,
+  ARCHIVED = 'ARCHIVED' as any,
 }
 
 /**
@@ -545,15 +545,15 @@ export interface V2beta1RuntimeConfig {
  * @enum {string}
  */
 export enum V2beta1RuntimeState {
-  RUNTIMESTATEUNSPECIFIED = <any>'RUNTIME_STATE_UNSPECIFIED',
-  PENDING = <any>'PENDING',
-  RUNNING = <any>'RUNNING',
-  SUCCEEDED = <any>'SUCCEEDED',
-  SKIPPED = <any>'SKIPPED',
-  FAILED = <any>'FAILED',
-  CANCELING = <any>'CANCELING',
-  CANCELED = <any>'CANCELED',
-  PAUSED = <any>'PAUSED',
+  RUNTIMESTATEUNSPECIFIED = 'RUNTIME_STATE_UNSPECIFIED' as any,
+  PENDING = 'PENDING' as any,
+  RUNNING = 'RUNNING' as any,
+  SUCCEEDED = 'SUCCEEDED' as any,
+  SKIPPED = 'SKIPPED' as any,
+  FAILED = 'FAILED' as any,
+  CANCELING = 'CANCELING' as any,
+  CANCELED = 'CANCELED' as any,
+  PAUSED = 'PAUSED' as any,
 }
 
 /**
@@ -678,7 +678,7 @@ export const RunServiceApiFetchParamCreator = function(configuration?: Configura
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'V2beta1Run' !== 'string' ||
+        'V2beta1Run' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 

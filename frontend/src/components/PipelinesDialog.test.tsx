@@ -73,11 +73,9 @@ function newMockPipeline(): ApiPipeline {
 }
 
 describe('PipelinesDialog', () => {
-  let listPipelineSpy: jest.SpyInstance<{}>;
-
   beforeEach(() => {
     jest.clearAllMocks();
-    listPipelineSpy = jest
+    jest
       .spyOn(Apis.pipelineServiceApi, 'listPipelines')
       .mockImplementation((...args) => {
         const response: ApiListPipelinesResponse = {

@@ -70,10 +70,10 @@ describe('InoutOutputTab', () => {
         <InputOutputTab execution={buildBasicExecution()} namespace={namespace}></InputOutputTab>
       </CommonTestWrapper>,
     );
-    await waitFor(() => screen.queryAllByText('Input Parameters').length == 0);
-    await waitFor(() => screen.queryAllByText('Input Artifacts').length == 0);
-    await waitFor(() => screen.queryAllByText('Output Parameters').length == 0);
-    await waitFor(() => screen.queryAllByText('Output Artifacts').length == 0);
+    await waitFor(() => screen.queryAllByText('Input Parameters').length === 0);
+    await waitFor(() => screen.queryAllByText('Input Artifacts').length === 0);
+    await waitFor(() => screen.queryAllByText('Output Parameters').length === 0);
+    await waitFor(() => screen.queryAllByText('Output Artifacts').length === 0);
     await waitFor(() => screen.getByText('There is no input/output parameter or artifact.'));
   });
 

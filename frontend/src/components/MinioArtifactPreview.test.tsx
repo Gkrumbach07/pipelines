@@ -313,7 +313,7 @@ describe('MinioArtifactPreview', () => {
     };
     const data = `012\n345\n678\n910`;
     readFile.mockResolvedValue(data);
-    const { container, queryByText } = render(
+    const { container } = render(
       <MinioArtifactPreview value={minioArtifact} maxbytes={data.length} />,
     );
     await act(TestUtils.flushPromises);

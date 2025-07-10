@@ -211,9 +211,9 @@ export interface ApiReadArtifactResponse {
  * @enum {string}
  */
 export enum ApiRelationship {
-  UNKNOWNRELATIONSHIP = <any>'UNKNOWN_RELATIONSHIP',
-  OWNER = <any>'OWNER',
-  CREATOR = <any>'CREATOR',
+  UNKNOWNRELATIONSHIP = 'UNKNOWN_RELATIONSHIP' as any,
+  OWNER = 'OWNER' as any,
+  CREATOR = 'CREATOR' as any,
 }
 
 /**
@@ -302,12 +302,12 @@ export interface ApiResourceReference {
  * @enum {string}
  */
 export enum ApiResourceType {
-  UNKNOWNRESOURCETYPE = <any>'UNKNOWN_RESOURCE_TYPE',
-  EXPERIMENT = <any>'EXPERIMENT',
-  JOB = <any>'JOB',
-  PIPELINE = <any>'PIPELINE',
-  PIPELINEVERSION = <any>'PIPELINE_VERSION',
-  NAMESPACE = <any>'NAMESPACE',
+  UNKNOWNRESOURCETYPE = 'UNKNOWN_RESOURCE_TYPE' as any,
+  EXPERIMENT = 'EXPERIMENT' as any,
+  JOB = 'JOB' as any,
+  PIPELINE = 'PIPELINE' as any,
+  PIPELINEVERSION = 'PIPELINE_VERSION' as any,
+  NAMESPACE = 'NAMESPACE' as any,
 }
 
 /**
@@ -454,8 +454,8 @@ export interface ApiRunMetric {
  * @enum {string}
  */
 export enum ApiRunStorageState {
-  AVAILABLE = <any>'STORAGESTATE_AVAILABLE',
-  ARCHIVED = <any>'STORAGESTATE_ARCHIVED',
+  AVAILABLE = 'STORAGESTATE_AVAILABLE' as any,
+  ARCHIVED = 'STORAGESTATE_ARCHIVED' as any,
 }
 
 /**
@@ -530,7 +530,7 @@ export interface ProtobufAny {
  * @enum {string}
  */
 export enum ProtobufNullValue {
-  NULLVALUE = <any>'NULL_VALUE',
+  NULLVALUE = 'NULL_VALUE' as any,
 }
 
 /**
@@ -571,11 +571,11 @@ export interface ReportRunMetricsResponseReportRunMetricResult {
  * @enum {string}
  */
 export enum ReportRunMetricsResponseReportRunMetricResultStatus {
-  UNSPECIFIED = <any>'UNSPECIFIED',
-  OK = <any>'OK',
-  INVALIDARGUMENT = <any>'INVALID_ARGUMENT',
-  DUPLICATEREPORTING = <any>'DUPLICATE_REPORTING',
-  INTERNALERROR = <any>'INTERNAL_ERROR',
+  UNSPECIFIED = 'UNSPECIFIED' as any,
+  OK = 'OK' as any,
+  INVALIDARGUMENT = 'INVALID_ARGUMENT' as any,
+  DUPLICATEREPORTING = 'DUPLICATE_REPORTING' as any,
+  INTERNALERROR = 'INTERNAL_ERROR' as any,
 }
 
 /**
@@ -584,9 +584,9 @@ export enum ReportRunMetricsResponseReportRunMetricResultStatus {
  * @enum {string}
  */
 export enum RunMetricFormat {
-  UNSPECIFIED = <any>'UNSPECIFIED',
-  RAW = <any>'RAW',
-  PERCENTAGE = <any>'PERCENTAGE',
+  UNSPECIFIED = 'UNSPECIFIED' as any,
+  RAW = 'RAW' as any,
+  PERCENTAGE = 'PERCENTAGE' as any,
 }
 
 /**
@@ -685,7 +685,7 @@ export const RunServiceApiFetchParamCreator = function(configuration?: Configura
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'ApiRun' !== 'string' ||
+        'ApiRun' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 
@@ -997,7 +997,7 @@ export const RunServiceApiFetchParamCreator = function(configuration?: Configura
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'ApiReportRunMetricsRequest' !== 'string' ||
+        'ApiReportRunMetricsRequest' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 

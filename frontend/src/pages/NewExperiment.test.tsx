@@ -221,11 +221,7 @@ describe('NewExperiment', () => {
     await TestUtils.flushPromises();
 
     expect(historyPushSpy).toHaveBeenCalledWith(
-      RoutePage.NEW_RUN +
-        `?experimentId=${experimentId}` +
-        `&pipelineId=${pipelineId}` +
-        `&pipelineVersionId=${pipelineVersionId}` +
-        `&firstRunInExperiment=1`,
+      `${RoutePage.NEW_RUN}?experimentId=${experimentId}&pipelineId=${pipelineId}&pipelineVersionId=${pipelineVersionId}&firstRunInExperiment=1`,
     );
   });
 

@@ -327,9 +327,9 @@ export interface ApiPipelineSpec {
  * @enum {string}
  */
 export enum ApiRelationship {
-  UNKNOWNRELATIONSHIP = <any>'UNKNOWN_RELATIONSHIP',
-  OWNER = <any>'OWNER',
-  CREATOR = <any>'CREATOR',
+  UNKNOWNRELATIONSHIP = 'UNKNOWN_RELATIONSHIP' as any,
+  OWNER = 'OWNER' as any,
+  CREATOR = 'CREATOR' as any,
 }
 
 /**
@@ -384,12 +384,12 @@ export interface ApiResourceReference {
  * @enum {string}
  */
 export enum ApiResourceType {
-  UNKNOWNRESOURCETYPE = <any>'UNKNOWN_RESOURCE_TYPE',
-  EXPERIMENT = <any>'EXPERIMENT',
-  JOB = <any>'JOB',
-  PIPELINE = <any>'PIPELINE',
-  PIPELINEVERSION = <any>'PIPELINE_VERSION',
-  NAMESPACE = <any>'NAMESPACE',
+  UNKNOWNRESOURCETYPE = 'UNKNOWN_RESOURCE_TYPE' as any,
+  EXPERIMENT = 'EXPERIMENT' as any,
+  JOB = 'JOB' as any,
+  PIPELINE = 'PIPELINE' as any,
+  PIPELINEVERSION = 'PIPELINE_VERSION' as any,
+  NAMESPACE = 'NAMESPACE' as any,
 }
 
 /**
@@ -444,9 +444,9 @@ export interface ApiTrigger {
  * @enum {string}
  */
 export enum JobMode {
-  UNKNOWNMODE = <any>'UNKNOWN_MODE',
-  ENABLED = <any>'ENABLED',
-  DISABLED = <any>'DISABLED',
+  UNKNOWNMODE = 'UNKNOWN_MODE' as any,
+  ENABLED = 'ENABLED' as any,
+  DISABLED = 'DISABLED' as any,
 }
 
 /**
@@ -495,7 +495,7 @@ export interface ProtobufAny {
  * @enum {string}
  */
 export enum ProtobufNullValue {
-  NULLVALUE = <any>'NULL_VALUE',
+  NULLVALUE = 'NULL_VALUE' as any,
 }
 
 /**
@@ -546,7 +546,7 @@ export const JobServiceApiFetchParamCreator = function(configuration?: Configura
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'ApiJob' !== 'string' ||
+        'ApiJob' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 

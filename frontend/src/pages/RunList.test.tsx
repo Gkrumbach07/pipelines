@@ -16,7 +16,7 @@
 
 import * as React from 'react';
 import * as Utils from 'src/lib/Utils';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import RunList, { RunListProps } from './RunList';
 import TestUtils from 'src/TestUtils';
 import produce from 'immer';

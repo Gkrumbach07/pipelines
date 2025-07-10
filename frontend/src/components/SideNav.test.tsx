@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-import { mount, ReactWrapper, shallow, ShallowWrapper } from 'enzyme';
+import { ReactWrapper, shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
-import { MemoryRouter, RouterProps } from 'react-router';
+import { RouterProps } from 'react-router';
 import { Apis } from '../lib/Apis';
 import { LocalStorage } from '../lib/LocalStorage';
 import { RoutePage } from './Router';
 import { css, SideNav } from './SideNav';
 import { GkeMetadata } from '../lib/GkeMetadata';
-import { createMemoryHistory } from 'history';
 import TestUtils from '../TestUtils';
 
 const wideWidth = 1000;

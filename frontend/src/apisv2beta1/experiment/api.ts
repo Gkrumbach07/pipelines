@@ -131,9 +131,9 @@ export interface V2beta1Experiment {
  * @enum {string}
  */
 export enum V2beta1ExperimentStorageState {
-  STORAGESTATEUNSPECIFIED = <any>'STORAGE_STATE_UNSPECIFIED',
-  AVAILABLE = <any>'AVAILABLE',
-  ARCHIVED = <any>'ARCHIVED',
+  STORAGESTATEUNSPECIFIED = 'STORAGE_STATE_UNSPECIFIED' as any,
+  AVAILABLE = 'AVAILABLE' as any,
+  ARCHIVED = 'ARCHIVED' as any,
 }
 
 /**
@@ -240,7 +240,7 @@ export const ExperimentServiceApiFetchParamCreator = function(configuration?: Co
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'V2beta1Experiment' !== 'string' ||
+        'V2beta1Experiment' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 

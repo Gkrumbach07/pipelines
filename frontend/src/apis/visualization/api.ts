@@ -151,11 +151,11 @@ export interface ApiVisualization {
  * @enum {string}
  */
 export enum ApiVisualizationType {
-  ROCCURVE = <any>'ROC_CURVE',
-  TFDV = <any>'TFDV',
-  TFMA = <any>'TFMA',
-  TABLE = <any>'TABLE',
-  CUSTOM = <any>'CUSTOM',
+  ROCCURVE = 'ROC_CURVE' as any,
+  TFDV = 'TFDV' as any,
+  TFMA = 'TFMA' as any,
+  TABLE = 'TABLE' as any,
+  CUSTOM = 'CUSTOM' as any,
 }
 
 /**
@@ -236,7 +236,7 @@ export const VisualizationServiceApiFetchParamCreator = function(configuration?:
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'ApiVisualization' !== 'string' ||
+        'ApiVisualization' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 

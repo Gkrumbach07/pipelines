@@ -131,9 +131,9 @@ export interface ApiExperiment {
  * @enum {string}
  */
 export enum ApiExperimentStorageState {
-  UNSPECIFIED = <any>'STORAGESTATE_UNSPECIFIED',
-  AVAILABLE = <any>'STORAGESTATE_AVAILABLE',
-  ARCHIVED = <any>'STORAGESTATE_ARCHIVED',
+  UNSPECIFIED = 'STORAGESTATE_UNSPECIFIED' as any,
+  AVAILABLE = 'STORAGESTATE_AVAILABLE' as any,
+  ARCHIVED = 'STORAGESTATE_ARCHIVED' as any,
 }
 
 /**
@@ -168,9 +168,9 @@ export interface ApiListExperimentsResponse {
  * @enum {string}
  */
 export enum ApiRelationship {
-  UNKNOWNRELATIONSHIP = <any>'UNKNOWN_RELATIONSHIP',
-  OWNER = <any>'OWNER',
-  CREATOR = <any>'CREATOR',
+  UNKNOWNRELATIONSHIP = 'UNKNOWN_RELATIONSHIP' as any,
+  OWNER = 'OWNER' as any,
+  CREATOR = 'CREATOR' as any,
 }
 
 /**
@@ -225,12 +225,12 @@ export interface ApiResourceReference {
  * @enum {string}
  */
 export enum ApiResourceType {
-  UNKNOWNRESOURCETYPE = <any>'UNKNOWN_RESOURCE_TYPE',
-  EXPERIMENT = <any>'EXPERIMENT',
-  JOB = <any>'JOB',
-  PIPELINE = <any>'PIPELINE',
-  PIPELINEVERSION = <any>'PIPELINE_VERSION',
-  NAMESPACE = <any>'NAMESPACE',
+  UNKNOWNRESOURCETYPE = 'UNKNOWN_RESOURCE_TYPE' as any,
+  EXPERIMENT = 'EXPERIMENT' as any,
+  JOB = 'JOB' as any,
+  PIPELINE = 'PIPELINE' as any,
+  PIPELINEVERSION = 'PIPELINE_VERSION' as any,
+  NAMESPACE = 'NAMESPACE' as any,
 }
 
 /**
@@ -375,7 +375,7 @@ export const ExperimentServiceApiFetchParamCreator = function(configuration?: Co
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'ApiExperiment' !== 'string' ||
+        'ApiExperiment' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 

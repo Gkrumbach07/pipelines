@@ -46,7 +46,7 @@ describe('ExecutionList ("Default" view)', () => {
   const listOperationOpts = new ListOperationOptions();
   listOperationOpts.setMaxResultSize(10);
   const getExecutionsRequest = new GetExecutionsRequest();
-  getExecutionsRequest.setOptions(listOperationOpts),
+  getExecutionsRequest.setOptions(listOperationOpts);
     beforeEach(() => {
       updateBannerSpy = jest.fn();
       updateDialogSpy = jest.fn();
@@ -171,7 +171,7 @@ describe('ExecutionList ("Default" view)', () => {
     fireEvent.click(newRowsPerPage);
 
     listOperationOpts.setMaxResultSize(20);
-    getExecutionsRequest.setOptions(listOperationOpts),
+    getExecutionsRequest.setOptions(listOperationOpts);
       await waitFor(() => {
         // API will be called again if "Rows per page" is changed
         expect(getExecutionTypesSpy).toHaveBeenCalledTimes(1);

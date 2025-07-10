@@ -131,7 +131,7 @@ describe('WorkflowParser', () => {
       const workflow = {
         metadata: {
           name: 'virtualRoot',
-          annotations: { ['pipelines.kubeflow.org/v2_pipeline']: 'true' },
+          annotations: { 'pipelines.kubeflow.org/v2_pipeline': 'true' },
         },
         status: {
           nodes: {

@@ -133,7 +133,7 @@ export interface ProtobufAny {
  * @enum {string}
  */
 export enum ProtobufNullValue {
-  NULLVALUE = <any>'NULL_VALUE',
+  NULLVALUE = 'NULL_VALUE' as any,
 }
 
 /**
@@ -142,9 +142,9 @@ export enum ProtobufNullValue {
  * @enum {string}
  */
 export enum RecurringRunMode {
-  MODEUNSPECIFIED = <any>'MODE_UNSPECIFIED',
-  ENABLE = <any>'ENABLE',
-  DISABLE = <any>'DISABLE',
+  MODEUNSPECIFIED = 'MODE_UNSPECIFIED' as any,
+  ENABLE = 'ENABLE' as any,
+  DISABLE = 'DISABLE' as any,
 }
 
 /**
@@ -367,9 +367,9 @@ export interface V2beta1RecurringRun {
  * @enum {string}
  */
 export enum V2beta1RecurringRunStatus {
-  STATUSUNSPECIFIED = <any>'STATUS_UNSPECIFIED',
-  ENABLED = <any>'ENABLED',
-  DISABLED = <any>'DISABLED',
+  STATUSUNSPECIFIED = 'STATUS_UNSPECIFIED' as any,
+  ENABLED = 'ENABLED' as any,
+  DISABLED = 'DISABLED' as any,
 }
 
 /**
@@ -451,7 +451,7 @@ export const RecurringRunServiceApiFetchParamCreator = function(configuration?: 
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'V2beta1RecurringRun' !== 'string' ||
+        'V2beta1RecurringRun' as any !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || '';
 

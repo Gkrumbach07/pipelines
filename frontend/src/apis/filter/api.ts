@@ -205,13 +205,13 @@ export interface ApiStringValues {
  * @enum {string}
  */
 export enum PredicateOp {
-  UNKNOWN = <any>'UNKNOWN',
-  EQUALS = <any>'EQUALS',
-  NOTEQUALS = <any>'NOT_EQUALS',
-  GREATERTHAN = <any>'GREATER_THAN',
-  GREATERTHANEQUALS = <any>'GREATER_THAN_EQUALS',
-  LESSTHAN = <any>'LESS_THAN',
-  LESSTHANEQUALS = <any>'LESS_THAN_EQUALS',
-  IN = <any>'IN',
-  ISSUBSTRING = <any>'IS_SUBSTRING',
+  UNKNOWN = 'UNKNOWN' as any,
+  EQUALS = 'EQUALS' as any,
+  NOTEQUALS = 'NOT_EQUALS' as any,
+  GREATERTHAN = 'GREATER_THAN' as any,
+  GREATERTHANEQUALS = 'GREATER_THAN_EQUALS' as any,
+  LESSTHAN = 'LESS_THAN' as any,
+  LESSTHANEQUALS = 'LESS_THAN_EQUALS' as any,
+  IN = 'IN' as any,
+  ISSUBSTRING = 'IS_SUBSTRING' as any,
 }

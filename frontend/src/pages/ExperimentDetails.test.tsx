@@ -26,7 +26,7 @@ import { RoutePage, RouteParams, QUERY_PARAMS } from 'src/components/Router';
 import { ToolbarProps } from 'src/components/Toolbar';
 import { range } from 'lodash';
 import { ButtonKeys } from 'src/lib/Buttons';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { NamespaceContext } from 'src/lib/KubeflowClient';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';

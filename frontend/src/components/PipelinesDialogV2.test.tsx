@@ -90,7 +90,7 @@ describe('PipelinesDialog', () => {
   });
 
   it('it renders correctly in multi user mode', async () => {
-    const tree = render(
+    render(
       <BuildInfoContext.Provider value={{ apiServerMultiUser: true }}>
         <PipelinesDialogV2 {...generateProps()} />
       </BuildInfoContext.Provider>,
@@ -104,7 +104,7 @@ describe('PipelinesDialog', () => {
   });
 
   it('it renders correctly in single user mode', async () => {
-    const tree = render(
+    render(
       <BuildInfoContext.Provider value={{ apiServerMultiUser: false }}>
         <PipelinesDialogV2 {...generateProps()} />
       </BuildInfoContext.Provider>,

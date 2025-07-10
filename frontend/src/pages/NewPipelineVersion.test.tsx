@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import * as React from 'react';
 import { ImportMethod, NewPipelineVersion } from './NewPipelineVersion';
 import TestUtils from 'src/TestUtils';

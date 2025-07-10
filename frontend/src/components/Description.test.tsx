@@ -44,7 +44,7 @@ describe('Description', () => {
     });
 
     it('renders paragraphs', () => {
-      const description = 'Paragraph 1\n' + '\n' + 'Paragraph 2';
+      const description = 'Paragraph 1\n\nParagraph 2';
       const tree = mount(<Description description={description} />).getDOMNode();
       expect(tree).toMatchSnapshot();
     });

@@ -35,14 +35,14 @@ describe('StatusUtils', () => {
       NodePhase.TERMINATED,
       NodePhase.OMITTED,
     ].forEach(status => {
-      it(`returns \'true\' if status is: ${status}`, () => {
+      it(`returns 'true' if status is: ${status}`, () => {
         expect(hasFinished(status)).toBe(true);
       });
     });
 
     [NodePhase.PENDING, NodePhase.RUNNING, NodePhase.UNKNOWN, NodePhase.TERMINATING].forEach(
       status => {
-        it(`returns \'false\' if status is: ${status}`, () => {
+        it(`returns 'false' if status is: ${status}`, () => {
           expect(hasFinished(status)).toBe(false);
         });
       },
@@ -85,19 +85,19 @@ describe('StatusUtils', () => {
     });
 
     [NodePhase.ERROR, NodePhase.FAILED].forEach(status => {
-      it(`returns color \'error\' if status is: ${status}`, () => {
+      it(`returns color 'error' if status is: ${status}`, () => {
         expect(statusToBgColor(status)).toEqual(statusBgColors.error);
       });
     });
 
     [NodePhase.RUNNING, NodePhase.TERMINATING].forEach(status => {
-      it(`returns color \'running\' if status is: ${status}`, () => {
+      it(`returns color 'running' if status is: ${status}`, () => {
         expect(statusToBgColor(status)).toEqual(statusBgColors.running);
       });
     });
 
     [NodePhase.SKIPPED, NodePhase.TERMINATED].forEach(status => {
-      it(`returns color \'terminated or skipped\' if status is: ${status}`, () => {
+      it(`returns color 'terminated or skipped' if status is: ${status}`, () => {
         expect(statusToBgColor(status)).toEqual(statusBgColors.terminatedOrSkipped);
       });
     });

@@ -47,7 +47,7 @@ describe('ArtifactList', () => {
   const listOperationOpts = new ListOperationOptions();
   listOperationOpts.setMaxResultSize(10);
   const getArtifactsRequest = new GetArtifactsRequest();
-  getArtifactsRequest.setOptions(listOperationOpts),
+  getArtifactsRequest.setOptions(listOperationOpts);
     beforeEach(() => {
       updateBannerSpy = jest.fn();
       updateDialogSpy = jest.fn();
@@ -168,7 +168,7 @@ describe('ArtifactList', () => {
     fireEvent.click(newRowsPerPage);
 
     listOperationOpts.setMaxResultSize(20);
-    getArtifactsRequest.setOptions(listOperationOpts),
+    getArtifactsRequest.setOptions(listOperationOpts);
       await waitFor(() => {
         // API will be called again if "Rows per page" is changed
         expect(getArtifactTypesSpy).toHaveBeenCalledTimes(1);
